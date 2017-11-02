@@ -29,6 +29,9 @@ public slots:
   void startTime();
   void stopTime();
 
+private slots:
+  void on_actionQuit_triggered();
+
 private:
   Ui::MainWindow *ui;
   QTcpSocket *socket;

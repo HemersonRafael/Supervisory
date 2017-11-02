@@ -93,3 +93,8 @@ MainWindow::~MainWindow(){
 }
 
 
+
+void MainWindow::on_actionQuit_triggered()
+{
+    close();
+}

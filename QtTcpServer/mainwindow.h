@@ -23,6 +23,8 @@ private:
 
 public slots:
   void showMessage(QString msg);
+private slots:
+  void on_actionQuit_triggered();
 };
 
 #endif // MAINWINDOW_H

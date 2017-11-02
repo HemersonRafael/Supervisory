@@ -27,3 +27,8 @@ void MainWindow::showMessage(QString msg){
   ui->textBrowser->append(msg);
 }
 
+
+void MainWindow::on_actionQuit_triggered()
+{
+    close();
+}

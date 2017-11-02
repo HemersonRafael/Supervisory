@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>575</width>
-    <height>373</height>
+    <width>640</width>
+    <height>480</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Tcp Client Producer</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -26,7 +26,7 @@
      <widget class="QTextBrowser" name="textBrowser"/>
     </item>
     <item row="1" column="0">
-     <layout class="QHBoxLayout" name="horizontalLayout">
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="40,20,40">
       <item>
        <widget class="QPushButton" name="pushButtonConnect">
         <property name="text">
@@ -173,14 +173,14 @@
      </widget>
     </item>
     <item row="7" column="0">
-     <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="90,10">
+     <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="75,5,20">
       <item>
        <widget class="QSlider" name="horizontalSliderTiming">
         <property name="minimum">
          <number>1</number>
         </property>
         <property name="maximum">
-         <number>3</number>
+         <number>5</number>
         </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -194,16 +194,52 @@
        </widget>
       </item>
       <item>
+       <spacer name="horizontalSpacer_5">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>13</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
        <widget class="QLabel" name="labelTiming">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="contextMenuPolicy">
+         <enum>Qt::DefaultContextMenu</enum>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Box</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Plain</enum>
+        </property>
         <property name="text">
-         <string/>
+         <string>1</string>
+        </property>
+        <property name="textFormat">
+         <enum>Qt::RichText</enum>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
      </layout>
     </item>
     <item row="8" column="0">
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="40,20,40">
       <item>
        <widget class="QPushButton" name="pushButtonConnectStart">
         <property name="text">
@@ -240,8 +276,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>575</width>
-     <height>21</height>
+     <width>640</width>
+     <height>22</height>
     </rect>
    </property>
   </widget>
@@ -252,8 +288,14 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionQuit"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
@@ -265,12 +307,12 @@
    <slot>display(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>142</x>
-     <y>165</y>
+     <x>152</x>
+     <y>205</y>
     </hint>
     <hint type="destinationlabel">
-     <x>249</x>
-     <y>165</y>
+     <x>315</x>
+     <y>212</y>
     </hint>
    </hints>
   </connection>
@@ -281,12 +323,12 @@
    <slot>display(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>142</x>
-     <y>224</y>
+     <x>152</x>
+     <y>299</y>
     </hint>
     <hint type="destinationlabel">
-     <x>242</x>
-     <y>237</y>
+     <x>315</x>
+     <y>306</y>
     </hint>
    </hints>
   </connection>
@@ -297,12 +339,12 @@
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>95</x>
-     <y>308</y>
+     <x>105</x>
+     <y>393</y>
     </hint>
     <hint type="destinationlabel">
-     <x>265</x>
-     <y>308</y>
+     <x>315</x>
+     <y>400</y>
     </hint>
    </hints>
   </connection>

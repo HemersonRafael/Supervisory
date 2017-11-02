@@ -61,3 +61,8 @@ MainWindow::~MainWindow()
   delete socket;
   delete ui;
 }
+
+void MainWindow::on_actionQuit_triggered()
+{
+    close();
+}
