@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QDateTime>
+#include "ploter.h"
 
 MainWindow::MainWindow(QWidget *parent) :
   QMainWindow(parent),
@@ -25,6 +26,7 @@ MainWindow::MainWindow(QWidget *parent) :
           SIGNAL(clicked(bool)),
           this,
           SLOT(stopTime()));
+
 
 }
 

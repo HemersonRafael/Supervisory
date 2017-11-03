@@ -26,6 +26,7 @@ MainWindow::MainWindow(QWidget *parent) :
           SIGNAL(clicked(bool)),
           this,
           SLOT(stopTime()));
+
 }
 
 void MainWindow::tcpConnect(){
