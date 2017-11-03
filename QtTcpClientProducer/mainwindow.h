@@ -18,9 +18,6 @@ public:
   explicit MainWindow(QWidget *parent = 0);
   ~MainWindow();
 
-
-  
-
 public slots:
   void timerEvent(QTimerEvent *e);
   void putData();

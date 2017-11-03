@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Tcp Client Producer</string>
   </property>
+  <property name="toolButtonStyle">
+   <enum>Qt::ToolButtonIconOnly</enum>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="1">

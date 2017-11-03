@@ -17,15 +17,22 @@ public:
   explicit MainWindow(QWidget *parent = 0);
   ~MainWindow();
   
-  void tcpConnect();
+
 public slots:
   void getData();
+  void timerEvent(QTimerEvent *e);
+  void tcpConnect();
+  void tcpDisconnect();
+  void startTime();
+  void stopTime();
+
 private slots:
   void on_actionQuit_triggered();
 
 private:
   Ui::MainWindow *ui;
   QTcpSocket *socket;
+  int timer;
 };
 
 #endif // MAINWINDOW_H

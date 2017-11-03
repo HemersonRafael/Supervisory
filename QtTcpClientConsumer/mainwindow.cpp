@@ -9,17 +9,28 @@ MainWindow::MainWindow(QWidget *parent) :
   ui->setupUi(this);
   socket = new QTcpSocket(this);
 
+  connect(ui->pushButtonConnect_2,
+          SIGNAL(clicked(bool)),
+          SLOT(tcpConnect()));
 
-  connect(ui->pushButtonGet,
+  connect(ui->pushButtonDisconnect_2,
+          SIGNAL(clicked(bool)),
+          SLOT(tcpDisconnect()));
+
+  connect(ui->pushButtonConnectStart_2,
           SIGNAL(clicked(bool)),
           this,
-          SLOT(getData()));
+          SLOT(startTime()));
+  connect(ui->pushButtonConnectStop_2,
+          SIGNAL(clicked(bool)),
+          this,
+          SLOT(stopTime()));
 
 }
 
 void MainWindow::tcpConnect(){
-  socket->connectToHost("127.0.0.1",1234);
-  if(socket->waitForConnected(3000)){
+  socket->connectToHost(ui->lineEditIp->text(),1234);
+  if(socket->state() == QAbstractSocket::ConnectedState ||socket->waitForConnected(3000)){
     qDebug() << "Connected";
   }
   else{
@@ -27,16 +38,47 @@ void MainWindow::tcpConnect(){
   }
 }
 
+void MainWindow::tcpDisconnect()
+{
+    socket->disconnectFromHost();
+
+    if(socket->state() == QAbstractSocket::UnconnectedState ||
+            socket->waitForDisconnected(3000)){
+      qDebug() << "Disconnected";
+    }
+
+
+}
+
+void MainWindow::startTime()
+{
+    timer = startTimer(ui->horizontalSliderTiming_2->value()*1000);
+}
+
+void MainWindow::stopTime()
+{
+    killTimer(timer);
+}
+
+void MainWindow::timerEvent(QTimerEvent *e)
+{
+    getData();
+
+}
+
 void MainWindow::getData(){
-  QString str;
+  QString str , get;
   QByteArray array;
   QStringList list;
+  QListWidgetItem *item = ui->listWidget->currentItem();
   qint64 thetime;
+  get = "get " + item->text() + " 5 \r\n";
+  qDebug() << get;
   qDebug() << "to get data...";
   if(socket->state() == QAbstractSocket::ConnectedState){
     if(socket->isOpen()){
       qDebug() << "reading...";
-      socket->write("get 127.0.0.1 5\r\n");
+      socket->write( get.toStdString().c_str() );
       socket->waitForBytesWritten();
       socket->waitForReadyRead();
       qDebug() << socket->bytesAvailable();
