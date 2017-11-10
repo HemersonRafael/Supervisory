@@ -10,22 +10,26 @@ MainWindow::MainWindow(QWidget *parent) :
   ui->setupUi(this);
   socket = new QTcpSocket(this);
 
-  connect(ui->pushButtonConnect_2,
+  connect(ui->pushButtonConnect,
           SIGNAL(clicked(bool)),
           SLOT(tcpConnect()));
 
-  connect(ui->pushButtonDisconnect_2,
+  connect(ui->pushButtonDisconnect,
           SIGNAL(clicked(bool)),
           SLOT(tcpDisconnect()));
 
-  connect(ui->pushButtonConnectStart_2,
+  connect(ui->pushButtonConnectStart,
           SIGNAL(clicked(bool)),
           this,
-          SLOT(startTime()));
-  connect(ui->pushButtonConnectStop_2,
+          SLOT(start()));
+  connect(ui->pushButtonConnectStop,
           SIGNAL(clicked(bool)),
           this,
-          SLOT(stopTime()));
+          SLOT(stop()));
+  connect(ui->pushButtonUpdate,
+          SIGNAL(clicked(bool)),
+          this,
+          SLOT(update()));
 
 
 }
@@ -52,19 +56,42 @@ void MainWindow::tcpDisconnect()
 
 }
 
-void MainWindow::startTime()
+void MainWindow::start()
 {
-    timer = startTimer(ui->horizontalSliderTiming_2->value()*1000);
+    timer = startTimer(ui->horizontalSliderTiming->value()*1000);
 }
 
-void MainWindow::stopTime()
+void MainWindow::stop()
 {
     killTimer(timer);
 }
 
+void MainWindow::update()
+{
+    QString str, list;
+    QListWidget* item = ui->listWidgetIps;
+
+    if(socket->state() == QAbstractSocket::ConnectedState){
+        if(socket->isOpen()){
+            list = "list\r\n";
+            socket->write(list.toStdString().c_str());
+            socket->waitForBytesWritten();
+            socket->waitForReadyRead();
+            qDebug() << socket->bytesAvailable();
+            while(socket->bytesAvailable()){
+              str = socket->readLine().replace("\n","").replace("\r","");
+              qDebug() << str;
+              ui->listWidgetIps->addItem(str);
+
+            }
+        }
+    }
+
+}
+
 void MainWindow::timerEvent(QTimerEvent *e)
 {
-    getData();
+    MainWindow::getData();
 
 }
 
@@ -72,9 +99,12 @@ void MainWindow::getData(){
   QString str , get;
   QByteArray array;
   QStringList list;
-  QListWidgetItem *item = ui->listWidget->currentItem();
+  QListWidgetItem *item = ui->listWidgetIps->currentItem();
   qint64 thetime;
-  get = "get " + item->text() + " 5 \r\n";
+
+   int nAmostras = 30;
+
+  get = "get " + item->text() + " " + QString::number( nAmostras)  + "\r\n";
   qDebug() << get;
   qDebug() << "to get data...";
   if(socket->state() == QAbstractSocket::ConnectedState){
@@ -93,6 +123,8 @@ void MainWindow::getData(){
           thetime = str.toLongLong(&ok);
           str = list.at(1);
           qDebug() << thetime << ": " << str;
+          qDebug() << "int valor: ";
+          qDebug() << str.toInt();
         }
       }
     }

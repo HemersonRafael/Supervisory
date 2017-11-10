@@ -4,7 +4,7 @@
 #include <QString>
 #include <QTextBrowser>
 #include <QTimer>
-#include<QTime>
+
 
 MainWindow::MainWindow(QWidget *parent) :
   QMainWindow(parent), ui(new Ui::MainWindow){
@@ -21,49 +21,47 @@ MainWindow::MainWindow(QWidget *parent) :
   connect(ui->pushButtonConnectStart,
           SIGNAL(clicked(bool)),
           this,
-          SLOT(startTime()));
+          SLOT(start()));
   connect(ui->pushButtonConnectStop,
           SIGNAL(clicked(bool)),
           this,
-          SLOT(stopTime()));
+          SLOT(stop()));
 
 }
 
 void MainWindow::tcpConnect(){
   socket->connectToHost(ui->lineEditIp->text(),1234);
-  if(socket->state() == QAbstractSocket::ConnectedState ||socket->waitForConnected(3000)){
+  if(socket->state() == QAbstractSocket::ConnectedState ||
+          socket->waitForConnected(3000)){
     qDebug() << "Connected";
+    ui->textBrowser->append("Connected");
   }
   else{
     qDebug() << "Disconnected";
+    ui->textBrowser->append("Disconnected");
   }
 }
 
-void MainWindow::tcpDisconnect()
-{
+void MainWindow::tcpDisconnect(){
     socket->disconnectFromHost();
 
     if(socket->state() == QAbstractSocket::UnconnectedState ||
             socket->waitForDisconnected(3000)){
       qDebug() << "Disconnected";
+      ui->textBrowser->append("Disconnected");
     }
-
-
 }
 
-void MainWindow::startTime()
-{
+void MainWindow::start(){
     timer = startTimer(ui->horizontalSliderTiming->value()*1000);
 }
 
-void MainWindow::stopTime()
-{
+void MainWindow::stop(){
     killTimer(timer);
 }
 
-void MainWindow::timerEvent(QTimerEvent *e)
-{
-    putData();
+void MainWindow::timerEvent(QTimerEvent *e){
+    MainWindow::putData();
 
 }
 
@@ -76,8 +74,9 @@ void MainWindow::putData(){
   if(socket->state()== QAbstractSocket::ConnectedState){
 
     msecdate = QDateTime::currentDateTime().toMSecsSinceEpoch();
-    str = "set "+ QString::number(msecdate) + " " + QString::number(qrand()%ui->horizontalSliderMax->value()+ui->horizontalSliderMin->value())+"\r\n";
-
+    str = "set "+ QString::number(msecdate) + " " + QString::number(frand())+"\r\n";
+      qDebug() << ui->horizontalSliderMax->value();
+      qDebug() << ui->horizontalSliderMin->value();
       qDebug() << str;
       qDebug() << socket->write(str.toStdString().c_str()) << " bytes written";
       ui->textBrowser->append(str);
@@ -93,9 +92,18 @@ MainWindow::~MainWindow(){
     delete ui;
 }
 
-
-
-void MainWindow::on_actionQuit_triggered()
-{
+void MainWindow::on_actionQuit_triggered(){
     close();
+}
+int MainWindow::frand(){
+   int i;
+   i = qrand()%ui->horizontalSliderMax->value()+ui->horizontalSliderMin->value();
+   if(i<=ui->horizontalSliderMax->value()){
+       return i;
+   }
+   else{
+       return ui->horizontalSliderMax->value();
+   }
+
+
 }

@@ -18,13 +18,14 @@ public:
   explicit MainWindow(QWidget *parent = 0);
   ~MainWindow();
 
+    int frand();
 public slots:
   void timerEvent(QTimerEvent *e);
   void putData();
   void tcpConnect();
   void tcpDisconnect();
-  void startTime();
-  void stopTime();
+  void start();
+  void stop();
 
 private slots:
   void on_actionQuit_triggered();

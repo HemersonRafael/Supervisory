@@ -23,8 +23,9 @@ public slots:
   void timerEvent(QTimerEvent *e);
   void tcpConnect();
   void tcpDisconnect();
-  void startTime();
-  void stopTime();
+  void start();
+  void stop();
+  void update();
 
 private slots:
   void on_actionQuit_triggered();

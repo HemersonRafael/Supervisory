@@ -3,9 +3,11 @@
 #include <QPen>
 #include <QBrush>
 
+
 Ploter::Ploter(QWidget *parent) : QWidget(parent)
 {
-
+    x0 = 0;
+    y0 = heigth();
 }
 
 void Ploter::paintEvent(QPaintEvent *event)
@@ -37,5 +39,21 @@ void Ploter::paintEvent(QPaintEvent *event)
     }
 
 
+
+}
+
+void Ploter::draw(qint64 time, int value)
+{
+    QPainter painter(this);
+    QBrush brush;
+    QPen pen;
+
+    brush.setColor(QColor(255,255,255));
+    brush.setStyle(Qt::SolidPattern);
+    pen.setColor(QColor(0,0,255));
+    pen.setWidth(2);
+    for(int i){
+
+    }
 
 }

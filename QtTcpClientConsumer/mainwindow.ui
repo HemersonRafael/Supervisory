@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>640</width>
-    <height>480</height>
+    <width>652</width>
+    <height>566</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
-     <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="40,60">
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="30,70">
       <item>
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
@@ -36,7 +36,7 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
-           <widget class="QPushButton" name="pushButtonConnect_2">
+           <widget class="QPushButton" name="pushButtonConnect">
             <property name="text">
              <string>Connect</string>
             </property>
@@ -56,7 +56,7 @@
            </spacer>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButtonDisconnect_2">
+           <widget class="QPushButton" name="pushButtonDisconnect">
             <property name="text">
              <string>Disconnect</string>
             </property>
@@ -65,7 +65,14 @@
          </layout>
         </item>
         <item>
-         <widget class="QListWidget" name="listWidget">
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>IPs dos produtores</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QListWidget" name="listWidgetIps">
           <property name="currentRow">
            <number>0</number>
           </property>
@@ -110,7 +117,7 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="70,10,20">
           <item>
-           <widget class="QSlider" name="horizontalSliderTiming_2">
+           <widget class="QSlider" name="horizontalSliderTiming">
             <property name="minimum">
              <number>1</number>
             </property>
@@ -142,7 +149,7 @@
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="labelTiming_2">
+           <widget class="QLabel" name="labelTiming">
             <property name="font">
              <font>
               <pointsize>14</pointsize>
@@ -176,7 +183,7 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <item>
-           <widget class="QPushButton" name="pushButtonConnectStart_2">
+           <widget class="QPushButton" name="pushButtonConnectStart">
             <property name="text">
              <string>Start</string>
             </property>
@@ -196,7 +203,7 @@
            </spacer>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButtonConnectStop_2">
+           <widget class="QPushButton" name="pushButtonConnectStop">
             <property name="text">
              <string>Stop</string>
             </property>
@@ -218,8 +225,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>640</width>
-     <height>22</height>
+     <width>652</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>
@@ -249,7 +256,24 @@
   </customwidget>
  </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>horizontalSliderTiming</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>labelTiming</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>123</x>
+     <y>491</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>179</x>
+     <y>484</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
  <slots>
   <slot>tcpConnect(QString)</slot>
  </slots>
