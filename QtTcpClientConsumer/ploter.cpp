@@ -7,7 +7,7 @@
 Ploter::Ploter(QWidget *parent) : QWidget(parent)
 {
     x0 = 0;
-    y0 = heigth();
+    y0 = height();
 }
 
 void Ploter::paintEvent(QPaintEvent *event)
@@ -52,8 +52,6 @@ void Ploter::draw(qint64 time, int value)
     brush.setStyle(Qt::SolidPattern);
     pen.setColor(QColor(0,0,255));
     pen.setWidth(2);
-    for(int i){
 
-    }
 
 }

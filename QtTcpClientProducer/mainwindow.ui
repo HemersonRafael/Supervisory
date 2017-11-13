@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Tcp Client Producer</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgba(10, 11, 13, 0.9);
+border-bottom-color: rgb(46, 52, 54);</string>
+  </property>
   <property name="toolButtonStyle">
    <enum>Qt::ToolButtonIconOnly</enum>
   </property>
@@ -22,6 +26,9 @@
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
        <widget class="QLabel" name="label_5">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);</string>
+        </property>
         <property name="text">
          <string>Messagens enviadas</string>
         </property>
@@ -29,6 +36,12 @@
       </item>
       <item>
        <widget class="QTextBrowser" name="textBrowser">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
+border-color: rgb(255, 255, 255);
+border-bottom-color: rgb(85, 87, 83);</string>
+        </property>
         <property name="frameShape">
          <enum>QFrame::Box</enum>
         </property>
@@ -46,6 +59,9 @@
      <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0,0,0,0,0">
       <item>
        <widget class="QLabel" name="label_4">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);</string>
+        </property>
         <property name="text">
          <string>IP do servidor</string>
         </property>
@@ -53,6 +69,9 @@
       </item>
       <item>
        <widget class="QLineEdit" name="lineEditIp">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        </property>
         <property name="text">
          <string>127.0.0.1</string>
         </property>
@@ -62,6 +81,9 @@
        <layout class="QHBoxLayout" name="horizontalLayout" stretch="40,20,40">
         <item>
          <widget class="QPushButton" name="pushButtonConnect">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(255, 255, 255);</string>
+          </property>
           <property name="text">
            <string>Connect</string>
           </property>
@@ -82,6 +104,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="pushButtonDisconnect">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(255, 255, 255);</string>
+          </property>
           <property name="text">
            <string>Disconnect</string>
           </property>
@@ -91,6 +116,9 @@
       </item>
       <item>
        <widget class="QLabel" name="label">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);</string>
+        </property>
         <property name="text">
          <string>Valor Minímo</string>
         </property>
@@ -100,6 +128,9 @@
        <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="75,5,20">
         <item>
          <widget class="QSlider" name="horizontalSliderMin">
+          <property name="styleSheet">
+           <string notr="true">selection-background-color: rgb(255, 255, 255);</string>
+          </property>
           <property name="maximum">
            <number>10</number>
           </property>
@@ -129,6 +160,9 @@
           <property name="focusPolicy">
            <enum>Qt::NoFocus</enum>
           </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(255, 255, 255);</string>
+          </property>
           <property name="frameShadow">
            <enum>QFrame::Sunken</enum>
           </property>
@@ -150,6 +184,9 @@
       </item>
       <item>
        <widget class="QLabel" name="label_2">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);</string>
+        </property>
         <property name="text">
          <string>Valor Máximo</string>
         </property>
@@ -159,6 +196,9 @@
        <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="75,5,20">
         <item>
          <widget class="QSlider" name="horizontalSliderMax">
+          <property name="styleSheet">
+           <string notr="true">selection-background-color: rgb(255, 255, 255);</string>
+          </property>
           <property name="minimum">
            <number>1</number>
           </property>
@@ -191,6 +231,9 @@
         </item>
         <item>
          <widget class="QLCDNumber" name="lcdNumberMax">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(255, 255, 255);</string>
+          </property>
           <property name="frameShadow">
            <enum>QFrame::Sunken</enum>
           </property>
@@ -212,6 +255,9 @@
       </item>
       <item>
        <widget class="QLabel" name="label_3">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);</string>
+        </property>
         <property name="text">
          <string>Timing (s)</string>
         </property>
@@ -221,6 +267,9 @@
        <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="75,5,20">
         <item>
          <widget class="QSlider" name="horizontalSliderTiming">
+          <property name="styleSheet">
+           <string notr="true">selection-background-color: rgb(255, 255, 255);</string>
+          </property>
           <property name="minimum">
            <number>1</number>
           </property>
@@ -264,6 +313,9 @@
           <property name="contextMenuPolicy">
            <enum>Qt::DefaultContextMenu</enum>
           </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(255, 255, 255);</string>
+          </property>
           <property name="frameShape">
            <enum>QFrame::Box</enum>
           </property>
@@ -290,6 +342,9 @@
        <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="40,20,40">
         <item>
          <widget class="QPushButton" name="pushButtonConnectStart">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(255, 255, 255);</string>
+          </property>
           <property name="text">
            <string>Start</string>
           </property>
@@ -310,6 +365,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="pushButtonConnectStop">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(255, 255, 255);</string>
+          </property>
           <property name="text">
            <string>Stop</string>
           </property>
@@ -332,6 +390,9 @@
    </property>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
    </attribute>
