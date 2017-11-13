@@ -2,6 +2,8 @@
 #include <QPainter>
 #include <QPen>
 #include <QBrush>
+#include <QDebug>
+
 
 
 Ploter::Ploter(QWidget *parent) : QWidget(parent)
@@ -42,8 +44,10 @@ void Ploter::paintEvent(QPaintEvent *event)
 
 }
 
-void Ploter::draw(qint64 time, int value)
-{
+void Ploter::draw( std::vector<long long int> timeList, std::vector<int>valueList){
+
+     qDebug() << timeList[0];
+
     QPainter painter(this);
     QBrush brush;
     QPen pen;

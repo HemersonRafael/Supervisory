@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QDateTime>
+#include <vector>
 class Ploter : public QWidget
 {
     Q_OBJECT
@@ -11,7 +12,9 @@ private:
 public:
     explicit Ploter(QWidget *parent = nullptr);
     void paintEvent(QPaintEvent *event);
-    void draw(qint64 time, int value);
+//    std::vector<long long int> timeList;
+//    std::vector<int>valueList;
+    void draw(  std::vector<long long int> timeList, std::vector<int>valueList);
 signals:
 
 public slots:

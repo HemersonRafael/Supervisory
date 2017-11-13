@@ -98,12 +98,15 @@ void MainWindow::on_actionQuit_triggered(){
 int MainWindow::frand(){
    int i;
    i = qrand()%ui->horizontalSliderMax->value()+ui->horizontalSliderMin->value();
-   if(i<=ui->horizontalSliderMax->value()){
-       return i;
-   }
-   else{
-       return ui->horizontalSliderMax->value();
-   }
+    while( i > ui->horizontalSliderMax->value() || i < ui->horizontalSliderMin->value() ){
 
+        if(ui->horizontalSliderMax->value() < ui->horizontalSliderMin->value() ){
+            i = ui->horizontalSliderMax->value();
+            break;
+        }
+          i = qrand()%ui->horizontalSliderMax->value()+ui->horizontalSliderMin->value();
+          qDebug() << i;
+}
+    return i;
 
 }

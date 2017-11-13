@@ -101,6 +101,8 @@ void MainWindow::getData(){
   QStringList list;
   QListWidgetItem *item = ui->listWidgetIps->currentItem();
   qint64 thetime;
+  std::vector<long long int> timeList;
+  std::vector<int>valueList;
 
    int nAmostras = 30;
 
@@ -122,9 +124,15 @@ void MainWindow::getData(){
           str = list.at(0);
           thetime = str.toLongLong(&ok);
           str = list.at(1);
-          qDebug() << thetime << ": " << str;
+          qDebug()  << "theTime: "<< thetime << ": " << str;
           qDebug() << "int valor: ";
           qDebug() << str.toInt();
+          timeList.push_back(thetime);
+          valueList.push_back(str.toInt() );
+        }
+        if(timeList.size() >= 40  && valueList.size() >=40){
+           //Ploter::draw(thetime,str.toInt() );
+            ui->widgetGrafico->draw(timeList,valueList);
         }
       }
     }
