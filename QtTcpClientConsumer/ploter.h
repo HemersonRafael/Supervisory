@@ -8,13 +8,20 @@ class Ploter : public QWidget
 {
     Q_OBJECT
 private:
-    int x0, y0;
+    std::vector< double >timeList;
+    std::vector< double >valueList;
+    double deltaX = 0;
+    double x1;
+
+
+    bool firstPrint = true;
+
 public:
     explicit Ploter(QWidget *parent = nullptr);
     void paintEvent(QPaintEvent *event);
 //    std::vector<long long int> timeList;
 //    std::vector<int>valueList;
-    void draw(  std::vector<long long int> timeList, std::vector<int>valueList);
+    void draw(  std::vector<qint64 > _timeList, std::vector<int>_valueList);
 signals:
 
 public slots:

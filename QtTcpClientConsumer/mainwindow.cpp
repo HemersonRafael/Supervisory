@@ -42,6 +42,8 @@ void MainWindow::tcpConnect(){
   else{
     qDebug() << "Disconnected";
   }
+
+  update();
 }
 
 void MainWindow::tcpDisconnect()
@@ -101,7 +103,7 @@ void MainWindow::getData(){
   QStringList list;
   QListWidgetItem *item = ui->listWidgetIps->currentItem();
   qint64 thetime;
-  std::vector<long long int> timeList;
+  std::vector<qint64> timeList;
   std::vector<int>valueList;
 
    int nAmostras = 30;
@@ -115,7 +117,7 @@ void MainWindow::getData(){
       socket->write( get.toStdString().c_str() );
       socket->waitForBytesWritten();
       socket->waitForReadyRead();
-      qDebug() << socket->bytesAvailable();
+//      qDebug() << socket->bytesAvailable();
       while(socket->bytesAvailable()){
         str = socket->readLine().replace("\n","").replace("\r","");
         list = str.split(" ");
@@ -124,16 +126,24 @@ void MainWindow::getData(){
           str = list.at(0);
           thetime = str.toLongLong(&ok);
           str = list.at(1);
-          qDebug()  << "theTime: "<< thetime << ": " << str;
-          qDebug() << "int valor: ";
-          qDebug() << str.toInt();
+          //qDebug()  << "theTime: "<< thetime << ": " << str;
+         // qDebug() << "int valor: ";
+         // qDebug() << str.toInt();
           timeList.push_back(thetime);
           valueList.push_back(str.toInt() );
+          if(timeList.size() >= 30 && valueList.size() >= 30){
+            //  qDebug() << "time size: " << timeList.size() << "value size: " << valueList.size();
+              ui->widgetGrafico->draw(timeList,valueList);
+              timeList.clear();
+              valueList.clear();
+
+          }
+
+
+        //  qDebug() << timeList.size();
+
         }
-        if(timeList.size() >= 40  && valueList.size() >=40){
-           //Ploter::draw(thetime,str.toInt() );
-            ui->widgetGrafico->draw(timeList,valueList);
-        }
+
       }
     }
   }

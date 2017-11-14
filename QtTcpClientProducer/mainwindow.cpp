@@ -105,7 +105,7 @@ int MainWindow::frand(){
             break;
         }
           i = qrand()%ui->horizontalSliderMax->value()+ui->horizontalSliderMin->value();
-          qDebug() << i;
+
 }
     return i;
 
