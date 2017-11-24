@@ -8,11 +8,14 @@
 
 
 Ploter::Ploter(QWidget *parent) : QWidget(parent)
-{
-
+{ qDebug() << "oi";
+     x1 =0;
+    deltaX = 0;
+    firstPrint = true;
 }
 
 void Ploter::paintEvent(QPaintEvent *event){
+    qDebug() << "event" ;
     QPainter painter(this);
     QBrush brush;
     QPen pen;

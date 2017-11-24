@@ -325,8 +325,26 @@ tick-color: rgb(46, 52, 54);</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>listWidgetIps</sender>
+   <signal>clicked(QModelIndex)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>updateLineEditIP()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>48</x>
+     <y>269</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>5</x>
+     <y>197</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>tcpConnect(QString)</slot>
+  <slot>updateLineEditIP()</slot>
+  <slot>slot2()</slot>
  </slots>
 </ui>

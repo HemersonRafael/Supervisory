@@ -73,9 +73,11 @@ void MainWindow::update()
     QString str, list;
     QListWidget* item = ui->listWidgetIps;
 
+    list = "list\r\n";
+
     if(socket->state() == QAbstractSocket::ConnectedState){
         if(socket->isOpen()){
-            list = "list\r\n";
+
             socket->write(list.toStdString().c_str());
             socket->waitForBytesWritten();
             socket->waitForReadyRead();
@@ -91,6 +93,14 @@ void MainWindow::update()
 
 }
 
+void MainWindow::updateLineEditIP()
+{
+    MainWindow::tcpDisconnect();
+    QListWidgetItem *item = ui->listWidgetIps->currentItem();
+    ui->lineEditIp->setText(item->text());
+    MainWindow::tcpConnect();
+}
+
 void MainWindow::timerEvent(QTimerEvent *e)
 {
     MainWindow::getData();
@@ -101,14 +111,14 @@ void MainWindow::getData(){
   QString str , get;
   QByteArray array;
   QStringList list;
-  QListWidgetItem *item = ui->listWidgetIps->currentItem();
+
   qint64 thetime;
   std::vector<qint64> timeList;
-  std::vector<int>valueList;
+  std::vector<int> valueList;
 
    int nAmostras = 30;
 
-  get = "get " + item->text() + " " + QString::number( nAmostras)  + "\r\n";
+  get = "get " + ui->lineEditIp->text() + " " + QString::number( nAmostras)  + "\r\n";
   qDebug() << get;
   qDebug() << "to get data...";
   if(socket->state() == QAbstractSocket::ConnectedState){

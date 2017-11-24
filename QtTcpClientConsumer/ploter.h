@@ -10,11 +10,9 @@ class Ploter : public QWidget
 private:
     std::vector< double >timeList;
     std::vector< double >valueList;
-    double deltaX = 0;
+    double deltaX;
     double x1;
-
-
-    bool firstPrint = true;
+    bool firstPrint;
 
 public:
     explicit Ploter(QWidget *parent = nullptr);

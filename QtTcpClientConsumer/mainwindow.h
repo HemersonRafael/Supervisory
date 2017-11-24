@@ -26,6 +26,7 @@ public slots:
   void start();
   void stop();
   void update();
+  void updateLineEditIP();
 
 private slots:
   void on_actionQuit_triggered();
