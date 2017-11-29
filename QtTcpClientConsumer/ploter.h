@@ -15,10 +15,11 @@ private:
     bool firstPrint;
 
 public:
+    //!Construtor da classe
     explicit Ploter(QWidget *parent = nullptr);
+    //!Atualiza a região do ploter
     void paintEvent(QPaintEvent *event);
-//    std::vector<long long int> timeList;
-//    std::vector<int>valueList;
+    //!Plotar o gráfico no Qwidget a partir das amostras coletadas no servidor.
     void draw(  std::vector<qint64 > _timeList, std::vector<int>_valueList);
 signals:
 

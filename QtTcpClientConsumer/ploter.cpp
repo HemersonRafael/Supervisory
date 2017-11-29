@@ -9,7 +9,7 @@
 
 Ploter::Ploter(QWidget *parent) : QWidget(parent)
 { qDebug() << "oi";
-     x1 =0;
+    x1 =0;
     deltaX = 0;
     firstPrint = true;
 }
@@ -67,18 +67,18 @@ void Ploter::paintEvent(QPaintEvent *event){
 
     double x2,y1,y2;
     if (firstPrint){
-         x1 =0;
-         y1 = height();
+        x1 =0;
+        y1 = height();
     }else{
         qDebug() << "x1: " <<  (timeList[0]/timeList[29])*width();
 
-         x1  = (timeList[0]/timeList[29])*width() ;
-         y1 = height() - valueList[0];
+        x1  = (timeList[0]/timeList[29])*width() ;
+        y1 = height() - valueList[0];
     }
 
-  int size = timeList.size();
+    int size = timeList.size();
 
-  qDebug() << size;
+    qDebug() << size;
     for(int i=1; i< size  ; i++){
 
         x2=  (timeList[i]/timeList[29])*width()  ;
@@ -120,17 +120,17 @@ void Ploter::draw( std::vector<qint64> _timeList, std::vector<int>_valueList){
 
     for(int i =0 ; i <30 ; i++){
         double x = _timeList[i];
-     //   qDebug() << "x: " << ( x- deltaX )/1000 ; // 1 milliseconds/1000 = 1 microsec
+        //   qDebug() << "x: " << ( x- deltaX )/1000 ; // 1 milliseconds/1000 = 1 microsec
 
         timeList.push_back( (x -deltaX )/1000 );
         // 1/ (1 + (e/3.5)^x)) adaptação feita para variar melhor entre 0 e 10, deixando o menor valor de  y = 0.5
-     //   qDebug() << " função: " << (1 / (1 +  std::pow(e/3.5,_valueList[i] )  ) ) * height() ;
-       // qDebug() << "altura: " << height();
+        //   qDebug() << " função: " << (1 / (1 +  std::pow(e/3.5,_valueList[i] )  ) ) * height() ;
+        // qDebug() << "altura: " << height();
         valueList.push_back((1 / (1 +  std::pow(e/3.5,_valueList[i] )  ) ) * height() );
     }
     firstPrint = false;
 
 
-        repaint();
+    repaint();
 
 }

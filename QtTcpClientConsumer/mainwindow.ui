@@ -100,13 +100,8 @@ color: rgb(0, 0, 0);
 selection-background-color: rgba(29, 28, 28, 159);</string>
           </property>
           <property name="currentRow">
-           <number>0</number>
+           <number>-1</number>
           </property>
-          <item>
-           <property name="text">
-            <string>127.0.0.1</string>
-           </property>
-          </item>
          </widget>
         </item>
         <item>
@@ -327,7 +322,7 @@ tick-color: rgb(46, 52, 54);</string>
   </connection>
   <connection>
    <sender>listWidgetIps</sender>
-   <signal>clicked(QModelIndex)</signal>
+   <signal>doubleClicked(QModelIndex)</signal>
    <receiver>MainWindow</receiver>
    <slot>updateLineEditIP()</slot>
    <hints>
